@@ -217,7 +217,7 @@ public class WifiShareActivity extends Activity implements WifiApManager.WifiSta
                         mDataSender = new DataSender(Utils.intToIpString(dhcpInfo.gateway), mSenderMediaListAdapter);
                     }
 
-                    mDataSender.addSendList(item.mMediaItem);
+                    mDataSender.send(item.mMediaItem);
                 }
             });
             mListView.setAdapter(mSenderMediaListAdapter);

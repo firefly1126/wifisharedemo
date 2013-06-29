@@ -22,6 +22,11 @@ public class DataReceiver implements SocketServer.SocketListener{
     private DataTransferListener mDataTransferListener;
     private Handler mUiHandler;
 
+    /**
+     * 以数据保存目录来构造对象
+     * @param storeDir 数据保存目录
+     * @param listener 数据传输的回调接口
+     */
     public DataReceiver(String storeDir, DataTransferListener listener) {
         mServer = new SocketServer(this);
         mStoreDir = storeDir;

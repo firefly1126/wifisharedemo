@@ -51,7 +51,7 @@ public class DataSender {
             public void handleMessage(Message msg) {
                 switch (msg.what) {
                     case WHAT_SEND:
-                        send(mSendList.remove(0));
+                        sendEvent(mSendList.remove(0));
                         break;
                     default:
                         break;
@@ -60,7 +60,11 @@ public class DataSender {
         };
     }
 
-    public void addSendList(MediaItem item) {
+    /**
+     * 传输 media数据
+     * @param item  MediaItem
+     */
+    public void send(MediaItem item) {
         mSendList.add(item);
         if (mWorkState == STATE_IDLE) {
             mUiHandler.sendEmptyMessage(WHAT_SEND);
@@ -131,7 +135,7 @@ public class DataSender {
             e.printStackTrace();
         }
     }
-    private void send(final MediaItem mediaItem) {
+    private void sendEvent(final MediaItem mediaItem) {
         mWorkState = STATE_BUSY;
         final SocketClient client = new SocketClient(mIpString);
         client.send(new SocketClient.SendCallback() {

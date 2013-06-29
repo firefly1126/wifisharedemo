@@ -243,10 +243,17 @@ public class MediaListAdapter extends BaseAdapter implements DataTransferListene
         }
     }
 
+    /**
+     * 传输状态
+     */
     public enum TransmitState{
+        /**闲置状态*/
         TRANSMIT_IDLE(0),
+        /**正在传输状态*/
         TRANSMITTING(1),
+        /**传输结束的状态*/
         TRANSMIT_FINISHED(2),
+        /**传输失败的状态*/
         TRANSMIT_FAILED(3);
 
         int mValue;
